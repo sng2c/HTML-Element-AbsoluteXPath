@@ -1,3 +1,18 @@
+# NAME
+
+HTML::Element::AbsoluteXPath - Add absolute XPath to HTML::Element support
+
+# VERSION
+
+version 0.001
+
+# DESCRIPTION
+
+HTML::Element::AbsoluteXPath adds ABSOLUTE XPath support to HTML::Element.
+'abs\_xpath' method is added.
+
+It generates smarter XPath with HINTS which are attributes name of HTML element, like 'class','id','width','name'...
+
 # SYSNOPSIS
 
     use HTML::Element;
@@ -65,15 +80,6 @@ more
     # get abs xpath overwrapped sibling
     say $found[2]->content->[1]->abs_xpath('id','class'); # "/html/body[1]/div[3]/div[2]"
 
-# DESCRIPTION
-
-HTML::Element::AbsoluteXPath adds ABSOLUTE XPath support to HTML::Element.
-'abs\_xpath' method is added.
-
-It generates smarter XPath with HINTS which are attributes name of HTML element, like 'class','id','width','name'...
-
-
-
 # METHODS
 
 ### abs\_xpath( \[ $hint, ... \] )
@@ -95,3 +101,14 @@ Hints work for being matched attribute names which have values.
 # SOURCE
 
 [https://github.com/sng2c/HTML-Element-AbsoluteXPath](https://github.com/sng2c/HTML-Element-AbsoluteXPath)
+
+# AUTHOR
+
+HyeonSeung Kim <sng2nara@gmail.com>
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2013 by HyeonSeung Kim.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
