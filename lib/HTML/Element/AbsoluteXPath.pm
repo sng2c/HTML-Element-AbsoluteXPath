@@ -46,7 +46,7 @@ sub HTML::Element::abs_xpath{
         push(@lin, $ee->tag() . $attr . "[$idx]" );
         $ee = $p; 
     }   
-    push(@lin, $ee->tag() );
+    push(@lin, $ee->tag().'[1]' );
     return '/'.join('/',reverse @lin);
 }
 
@@ -61,7 +61,7 @@ sub HTML::Element::abs_xpath{
     ...
 
     print $elem->abs_xpath;
-    # output like '/html/body/div[1]'
+    # output like '/html[1]/body[1]/div[1]'
 
 more
 
@@ -91,25 +91,25 @@ more
     my @found = $root->find_by_tag_name('div');
     
     # get abs xpath
-    say $found[0]->abs_xpath; # '/html/body[1]/div[1]' 
+    say $found[0]->abs_xpath; # '/html[1]/body[1]/div[1]' 
     
     # get abs xpath with 'id' hint.
-    say $found[0]->abs_xpath('id'); #, "/html/body[1]/div[\@id='test'][1]"
+    say $found[0]->abs_xpath('id'); #, "/html[1]/body[1]/div[\@id='test'][1]"
     
     # get abs xpath with 'id' and 'class' hints.
-    say $found[0]->abs_xpath('id','class'); # "/html/body[1]/div[\@id='test' and \@class='testclass'][1]"
+    say $found[0]->abs_xpath('id','class'); # "/html[1]/body[1]/div[\@id='test' and \@class='testclass'][1]"
     
     # get abs xpath hints for elem has just 'class' attr.
-    say $found[1]->abs_xpath('id','class'); # "/html/body[1]/div[\@class='testclass'][2]"
+    say $found[1]->abs_xpath('id','class'); # "/html[1]/body[1]/div[\@class='testclass'][2]"
     
     # get abs xpath with hints for elem has no attrs
-    say $found[2]->abs_xpath('id','class'); # "/html/body[1]/div[3]"
+    say $found[2]->abs_xpath('id','class'); # "/html[1]/body[1]/div[3]"
     
     # get abs xpath overwrapped one
-    say $found[2]->content->[0]->abs_xpath('id','class'); # "/html/body[1]/div[3]/div[\@class='innerclass'][1]"
+    say $found[2]->content->[0]->abs_xpath('id','class'); # "/html[1]/body[1]/div[3]/div[\@class='innerclass'][1]"
     
     # get abs xpath overwrapped sibling
-    say $found[2]->content->[1]->abs_xpath('id','class'); # "/html/body[1]/div[3]/div[2]"
+    say $found[2]->content->[1]->abs_xpath('id','class'); # "/html[1]/body[1]/div[3]/div[2]"
 
 =head1 DESCRIPTION
 
