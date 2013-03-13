@@ -2,7 +2,7 @@ use strict;
 use lib qw(./lib);
 use warnings;
 
-use Test::More tests => 10;                      # last test to print
+use Test::More tests => 9;                      # last test to print
 
 use HTML::TreeBuilder 5.03;
 use_ok('HTML::Element::AbsoluteXPath');
