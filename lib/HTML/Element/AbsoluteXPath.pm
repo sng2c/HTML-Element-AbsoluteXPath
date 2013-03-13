@@ -6,6 +6,8 @@ package HTML::Element::AbsoluteXPath;
 
 # VERSION
 
+use HTML::Element;
+
 sub HTML::Element::abs_xpath{
     my $self = shift;
     my @hint = @_;
