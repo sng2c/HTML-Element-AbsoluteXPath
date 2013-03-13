@@ -1,17 +1,16 @@
 # NAME
 
-HTML::Element::AbsoluteXPath - Add absolute XPath to HTML::Element support
+HTML::Element::AbsoluteXPath - Add absolute XPath support to HTML::Element
 
 # VERSION
 
-version 0.003
+version 0.004
 
 # DESCRIPTION
 
-HTML::Element::AbsoluteXPath adds ABSOLUTE XPath support to HTML::Element.
-'abs\_xpath' method is added.
+HTML::Element::AbsoluteXPath adds ABSOLUTE XPath support to HTML::Element by adding 'abs\_xpath' method to HTML::Element package.
 
-It generates smarter XPath with HINTS which are attributes name of HTML element, like 'class','id','width','name'...
+It generates smarter XPaths with HINTS which are attributes name of HTML element, like 'class','id','width','name' and etc.
 
 # SYSNOPSIS
 
@@ -47,7 +46,7 @@ more
     $root->eof();
 
     # get abs xpath of root
-    say $root->abs_xpath; # '/html' 
+    say $root->abs_xpath; # '/html[1]' 
     
 
     my @found = $root->find_by_tag_name('div');
@@ -84,10 +83,12 @@ more
 
 ### abs\_xpath( \[ $hint, ... \] )
 
-Returns absolute xpath of current HTML::Element object.
+Returns an absolute xpath of current HTML::Element object.
 
 Hints are optional. Internally, '\_tag' is added to hints.
-With no hints, it generates a xpath with only ordinary expressions like "/html\[1\]/body\[1\]/div\[1\]", "/html\[1\]/body\[1\]/a\[13\]".
+
+With no hints, it generates an xpath with only ordinary expressions like "/html\[1\]/body\[1\]/div\[1\]", "/html\[1\]/body\[1\]/a\[13\]".
+
 If you set 'class' as hint, it generates a smarter xpath like "/html\[1\]/body\[1\]/div\[@class='SOME'\]\[1\]","/html\[1\]/body\[1\]/div\[2\]".
 
 Hints work for being matched attribute names which have values.

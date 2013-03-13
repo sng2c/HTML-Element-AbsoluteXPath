@@ -4,7 +4,7 @@ use warnings;
 
 use Test::More tests => 10;                      # last test to print
 
-use_ok('HTML::TreeBuilder' );
+use HTML::TreeBuilder 5.03;
 use_ok('HTML::Element::AbsoluteXPath');
 
 my $root = HTML::TreeBuilder->new;
