@@ -61,7 +61,7 @@ sub HTML::Element::abs_xpath{
     ...
 
     print $elem->abs_xpath;
-    # output like '/html/body/div[0]'
+    # output like '/html/body/div[1]'
 
 more
 
