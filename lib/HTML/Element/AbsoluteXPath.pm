@@ -36,11 +36,9 @@ sub HTML::Element::abs_xpath{
         foreach (keys %filters){
             next if $_ eq '_tag';
             my $v = $filters{$_};
-            next unless $v; 
             my $pat = "\@$_='$v'";
             push(@attrs,$pat);
         }   
-        my $_depth = '>' x $ee->depth();
 
         my $attr = ''; 
         $attr = "[".join(' and ',@attrs)."]" if @attrs;

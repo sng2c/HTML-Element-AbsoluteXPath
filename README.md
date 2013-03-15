@@ -4,7 +4,7 @@ HTML::Element::AbsoluteXPath - Add absolute XPath support to HTML::Element
 
 # VERSION
 
-version 0.004
+version 0.005
 
 # DESCRIPTION
 
