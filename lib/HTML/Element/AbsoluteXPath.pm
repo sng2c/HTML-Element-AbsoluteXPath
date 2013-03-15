@@ -22,10 +22,12 @@ sub HTML::Element::abs_xpath{
         my %filters;
         foreach (sort @hint){
             my $v = $ee->attr($_);
+            next unless $v;
             $v =~ s/^\s+//;
             $v =~ s/\s+$//;
             $v =~ s/\s+/ /gs;
-            $filters{$_} = $ee->attr($_) if $v;
+            next unless $v;
+            $filters{$_} = $ee->attr($_);
         }   
         my @sib = $p->look_down(%filters);
 
