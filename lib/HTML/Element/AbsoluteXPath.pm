@@ -14,27 +14,23 @@ sub HTML::Element::abs_xpath{
    
     push(@hint,'_tag') unless grep{$_ eq '_tag'}@hint;
 
-    my $r = $self->root();
+    my $raddr = $self->root()->address;
     my @lin;
     my $ee = $self; 
-    while( $ee->same_as($r)==0 ){
+    while( $ee->address ne $raddr ){
         my $p = $ee->parent();
         my %filters;
         foreach (sort @hint){
             my $v = $ee->attr($_);
             next unless $v;
-            $v =~ s/^\s+//;
-            $v =~ s/\s+$//;
-            $v =~ s/\s+/ /gs;
-            next unless $v;
-            $filters{$_} = $ee->attr($_);
+            $filters{$_} = $v;
         }   
         my @sib = $p->look_down(%filters);
 
         @sib = grep{$_->depth() == $ee->depth()}@sib;
         my $idx = 1;
         foreach (@sib){
-            last if $_->same_as($ee);
+            last if $_->address eq $ee->address;
             $idx++;
         }   
 
