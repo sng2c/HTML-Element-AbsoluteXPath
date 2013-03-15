@@ -21,7 +21,11 @@ sub HTML::Element::abs_xpath{
         my $p = $ee->parent();
         my %filters;
         foreach (sort @hint){
-            $filters{$_} = $ee->attr($_) if $ee->attr($_);
+            my $v = $ee->attr($_);
+            $v =~ s/^\s+//;
+            $v =~ s/\s+$//;
+            $v =~ s/\s+/ /gs;
+            $filters{$_} = $ee->attr($_) if $v;
         }   
         my @sib = $p->look_down(%filters);
 
