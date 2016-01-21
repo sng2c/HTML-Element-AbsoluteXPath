@@ -35,7 +35,7 @@ sub HTML::Element::abs_xpath{
         }   
 
         my @attrs;
-        foreach (keys %filters){
+        foreach (sort keys %filters){
             next if $_ eq '_tag';
             my $v = $filters{$_};
             my $pat = "\@$_='$v'";
